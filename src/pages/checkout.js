@@ -68,7 +68,7 @@ const checkout = () => {
             items.length > 0 && (
               <>
                 <h2 className="whitespace-nowrap">
-                  <div className="whitespace-breakspaces">
+                  <div className="whitespace-breakspaces mb-4">
                     {
                       total >= 499 ?
                         <p className="text-xs text-green-600">{`Your order is eligible for FREE Delivery.`}</p> :
