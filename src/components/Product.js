@@ -7,7 +7,7 @@ import { addToBasket } from '../slices/basketSlice'
 const MAX_RATING = 5
 const MIN_RATING = 1
 
-const Product = ({ product: { id, title, price, description, category, image } }) => {
+const Product = ({ product: { id, title, price, description, category, image, quantity } }) => {
   const dispatch = useDispatch()
   
   // randamised rating
@@ -22,7 +22,8 @@ const Product = ({ product: { id, title, price, description, category, image } }
       price,
       description,
       category,
-      image
+      image,
+      quantity
     }
 
     dispatch(addToBasket(product))

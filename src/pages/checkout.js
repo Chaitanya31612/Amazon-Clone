@@ -48,6 +48,7 @@ const checkout = () => {
                 description={item.description}
                 category={item.category}
                 image={item.image}
+                quantity={item.quantity}
               />
             ))}
 
@@ -72,7 +73,10 @@ const checkout = () => {
                     {
                       total >= 499 ?
                         <p className="text-xs text-green-600">{`Your order is eligible for FREE Delivery.`}</p> :
-                        <p className="text-xs text-gray-500">{`Add ${new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(499 - total)} of eligible items to your order to qualify for FREE Delivery. `}</p>
+                        <p className="text-xs text-gray-500">
+                          Add
+                          <span className="text-blue-400 mx-1">{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(499 - total)}</span>
+                          of eligible items to your order to qualify for FREE Delivery.</p>
                     }
                   </div>
                   Subtotal ({items.length} items):
