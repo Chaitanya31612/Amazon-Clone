@@ -1,5 +1,11 @@
 module.exports = {
   images: {
-    domains: ["pngimg.com", "fakestoreapi.com"]
+    domains:
+      [
+        "links.papareact.com",
+        "pngimg.com",
+        "fakestoreapi.com",
+        "images-eu.ssl-images-amazon.com"
+      ]
   }
 }

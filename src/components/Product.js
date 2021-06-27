@@ -1,15 +1,32 @@
 import Image from 'next/image'
 import { StarIcon } from '@heroicons/react/solid'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addToBasket } from '../slices/basketSlice'
 
 const MAX_RATING = 5
 const MIN_RATING = 1
 
 const Product = ({ product: { id, title, price, description, category, image } }) => {
+  const dispatch = useDispatch()
+  
   // randamised rating
   const [rating] = useState(
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
   )
+
+  const addItemToBasket = () => {
+    const product = {
+      id,
+      title,
+      price,
+      description,
+      category,
+      image
+    }
+
+    dispatch(addToBasket(product))
+  }
 
   return (
     <div className={'relative flex flex-col m-5 bg-white p-10 z-30'}>
@@ -23,7 +40,7 @@ const Product = ({ product: { id, title, price, description, category, image } }
 
       <div className="flex">
         {Array(rating).fill().map((_, index) => (
-          <StarIcon className={'h-5 text-yellow-500'} />
+          <StarIcon key={index} className={'h-5 text-yellow-500'} />
         ))}
       </div>
 
@@ -33,7 +50,7 @@ const Product = ({ product: { id, title, price, description, category, image } }
         {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(price)}
       </div>
 
-      <button className={'mt-auto button'}>Add to Cart</button>
+      <button onClick={() => addItemToBasket()} className={'mt-auto button'}>Add to Cart</button>
     </div>
   )
 }
