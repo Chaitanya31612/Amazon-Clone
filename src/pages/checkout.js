@@ -1,16 +1,24 @@
 import Image from 'next/image'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import Header from "../components/Header"
-import { selectItems, selectTotal } from '../slices/basketSlice'
+import { selectItems, selectTotal, fetchFromLocalStorage } from '../slices/basketSlice'
 import CheckoutProduct from '../components/CheckoutProduct'
 import Head from 'next/head'
 import { useSession } from 'next-auth/client'
-import { Fragment } from 'react'
+import { useEffect } from "react";
 
 const checkout = () => {
   const items = useSelector(selectItems)
   const total = useSelector(selectTotal)
   const [session] = useSession()
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem('items'))
+    if(items) 
+      dispatch(fetchFromLocalStorage(items))
+  }, [])
 
   return (
     <div className='bg-gray-100'>

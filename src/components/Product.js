@@ -3,6 +3,8 @@ import { StarIcon } from '@heroicons/react/solid'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addToBasket } from '../slices/basketSlice'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MAX_RATING = 5
 const MIN_RATING = 1
@@ -14,6 +16,18 @@ const Product = ({ product: { id, title, price, description, category, image, qu
   const [rating] = useState(
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
   )
+
+  const onClickNotify = () => {
+    toast.success('Item Added to Cart!', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
+  }
 
   const addItemToBasket = () => {
     const product = {
@@ -27,6 +41,7 @@ const Product = ({ product: { id, title, price, description, category, image, qu
     }
 
     dispatch(addToBasket(product))
+    onClickNotify()
   }
 
   return (
