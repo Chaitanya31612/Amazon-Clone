@@ -26,3 +26,5 @@ Have a look:
 ### Cart
 ---
 ![image](https://user-images.githubusercontent.com/54992097/123679350-07daac00-d865-11eb-9d78-84b12efa7ed7.png)
+
+![image](https://user-images.githubusercontent.com/54992097/123679669-6142db00-d865-11eb-93b4-fa3b7944e5b5.png)
