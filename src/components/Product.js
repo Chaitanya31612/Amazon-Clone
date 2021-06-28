@@ -18,9 +18,9 @@ const Product = ({ product: { id, title, price, description, category, image, qu
   )
 
   const onClickNotify = () => {
-    toast.success('Item Added to Cart!', {
-      position: "top-right",
-      autoClose: 2000,
+    toast(`${title} added to Cart!`, {
+      position: "bottom-right",
+      autoClose: 1500,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,

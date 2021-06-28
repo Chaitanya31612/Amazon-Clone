@@ -21,28 +21,18 @@ const CheckoutProduct = ({
   const [rating] = useState(
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
   )
+  const [quant, setQuant] = useState(quantity)
 
   const dispatch = useDispatch()
-  const addItemToBasket = () => {
-    const product = {
-      id,
-      title,
-      price,
-      description,
-      category,
-      image,
-      quantity
-    }
-
-    dispatch(addToBasket(product))
-  }
 
   const removeItemFromBasket = () => {
-    setQuant(quantity)
+    // setQuant(quantity)
     dispatch(removeFromBasket({ id }))
   }
 
-  const [quant, setQuant] = useState(quantity)
+  useEffect(() => {
+    setQuant(quantity)
+  }, [removeItemFromBasket])
 
   const decrementItemQuantity = () => {
     if (quant - 1 == 0) {
@@ -63,7 +53,7 @@ const CheckoutProduct = ({
 
 
   return (
-    <div className={'grid grid-cols-5'}>
+    <div className={'cart-item'}>
       <Image src={image} width={200} height={200} objectFit={'contain'} />
 
       <div className={'col-span-3 mx-5'}>
@@ -83,9 +73,9 @@ const CheckoutProduct = ({
 
       <div className="flex flex-col space-y-2 my-auto justify-self-end">
         <div className="flex space-x-2 items-center justify-center">
-        <button onClick={decrementItemQuantity} className="p-2 px-4 text-xs md:text-sm bg-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-400">-</button>
-        <span>{quant}</span>
-        <button onClick={incrementItemQuantity} className="p-2 px-4 text-xs md:text-sm bg-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-400">+</button>
+          <button onClick={decrementItemQuantity} className="p-2 px-4 text-xs md:text-sm bg-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-400">-</button>
+          <span>{quant}</span>
+          <button onClick={incrementItemQuantity} className="p-2 px-4 text-xs md:text-sm bg-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-400">+</button>
         </div>
         <button onClick={removeItemFromBasket} className="button text-xs sm:text-sm">Remove from Basket</button>
       </div>

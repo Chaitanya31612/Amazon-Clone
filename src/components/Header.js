@@ -55,10 +55,10 @@ const Header = () => {
           <p className="text-sm">All</p>
           <ChevronDownIcon className='h-3' />
         </div>
-        <div className='hidden sm:flex items-center h-10 rounded-md flex-grow bg-yellow-400 hover:bg-yellow-500 cursor-pointer'>
-          <input type="text" className={`focus:outline-none p-2 h-full w-6 flex-grow flex-shrink px-4`} />
-          <SearchIcon className='h-12 p-4' />
-        </div>
+        <form target="_blank" action={'https://www.amazon.in/s'} className='hidden sm:flex items-center h-10 rounded-md flex-grow bg-yellow-400 hover:bg-yellow-500 cursor-pointer'>
+          <input type="text" name={'k'} className={`focus:outline-none p-2 h-full w-6 flex-grow flex-shrink px-4`} />
+          <button className="focus:outline-none" type="submit"><SearchIcon className='h-12 p-4' /></button>
+        </form>
 
         {/* Right Bar */}
         <div className={`text-white flex items-center text-xs space-x-6 mx-5 whitespace-nowrap`}>

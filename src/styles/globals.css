@@ -36,4 +36,8 @@
   .whitespace-breakspaces {
     white-space: break-spaces
   }
+
+  .cart-item {
+    @apply flex flex-col sm:grid grid-cols-5
+  }
 }

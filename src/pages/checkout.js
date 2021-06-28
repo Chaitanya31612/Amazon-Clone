@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Header from "../components/Header"
 import { selectItems, selectTotal, fetchFromLocalStorage } from '../slices/basketSlice'
 import CheckoutProduct from '../components/CheckoutProduct'
+import Footer from '../components/Footer'
 import Head from 'next/head'
 import { useSession } from 'next-auth/client'
 import { useEffect } from "react";
@@ -105,6 +106,7 @@ const checkout = () => {
         </div>
       </main>
 
+      <Footer />
     </div>
   )
 }
