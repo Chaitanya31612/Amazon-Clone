@@ -2,10 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   * {
-    font-family: 'SF-Mono', sans-serif;
+    font-family: "SF-Mono", sans-serif;
   }
   /* @font-face {
     font-family: 'Arial', sans-serif;
@@ -14,19 +13,23 @@
 
 @layer components {
   .link {
-    @apply cursor-pointer hover:underline
+    @apply cursor-pointer hover:underline;
   }
 
   .outline-yellow input:focus {
-    outline-color: #F3A847;
+    outline-color: #f3a847;
   }
 
   .button {
-    @apply p-2 text-xs md:text-sm bg-gradient-to-b from-yellow-200 to-yellow-400 border border-yellow-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 active:from-yellow-500
+    @apply p-2 text-xs md:text-sm bg-gradient-to-b from-yellow-200 to-yellow-400 border border-yellow-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 active:from-yellow-500;
+  }
+
+  .not-allowed-button {
+    @apply p-2 text-xs md:text-sm bg-gradient-to-b from-gray-400 to-gray-600 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-500 active:from-gray-500 cursor-not-allowed text-white;
   }
 
   .button-gray {
-    @apply p-2 text-xs md:text-sm bg-gray-400 border border-gray-500 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-500
+    @apply p-2 text-xs md:text-sm bg-gray-400 border border-gray-500 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-500;
   }
 
   .z-100 {
@@ -34,10 +37,10 @@
   }
 
   .whitespace-breakspaces {
-    white-space: break-spaces
+    white-space: break-spaces;
   }
 
   .cart-item {
-    @apply flex flex-col sm:grid grid-cols-5
+    @apply flex flex-col sm:grid grid-cols-5;
   }
 }
