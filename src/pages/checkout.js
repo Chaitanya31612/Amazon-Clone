@@ -37,6 +37,7 @@ const checkout = () => {
       items,
       email: session.user.email,
     });
+    localStorage.removeItem("items");
 
     // redirect the user to stripe checkout
     const result = await stripe.redirectToCheckout({

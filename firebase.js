@@ -1,4 +1,4 @@
-import firebase from 'firebase'
+import firebase from "firebase";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCKR7S0pYu5RSPpe1BuBzB2Lvi0TuOGP78",
@@ -6,5 +6,13 @@ const firebaseConfig = {
   projectId: "clone-b8018",
   storageBucket: "clone-b8018.appspot.com",
   messagingSenderId: "118549874324",
-  appId: "1:118549874324:web:fee6a5458d51e22af11681"
+  appId: "1:118549874324:web:fee6a5458d51e22af11681",
 };
+
+const app = !firebase.apps.length
+  ? firebase.initializeApp(firebaseConfig)
+  : firebase.app();
+
+const db = app.firestore();
+
+export default db;
