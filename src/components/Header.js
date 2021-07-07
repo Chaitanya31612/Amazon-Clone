@@ -83,7 +83,12 @@ const Header = () => {
             <p className={"font-bold md:text-sm"}>Account & Lists</p>
           </div>
 
-          <div onClick={() => router.push("/orders")} className='link'>
+          <div
+            onClick={() => {
+              session && router.push("/orders");
+            }}
+            className='link'
+          >
             <p>Returns</p>
             <p className={"font-bold md:text-sm"}>& Orders</p>
           </div>

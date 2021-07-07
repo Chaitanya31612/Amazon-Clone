@@ -27,16 +27,20 @@ const checkout = () => {
     if (items) dispatch(fetchFromLocalStorage(items));
   }, []);
 
-  console.log(session);
+  // console.log(session);
 
   const createCheckoutSession = async () => {
+    console.log("public k", process.env.stripe_public_key);
     const stripe = await stripePromise;
 
+    console.log("stripe", stripe);
     // call the backend to create checkout session..
     const checkoutSession = await axios.post("/api/create-checkout-session", {
       items,
       email: session.user.email,
     });
+
+    console.log("checkoutsession", checkoutSession);
     localStorage.removeItem("items");
 
     // redirect the user to stripe checkout

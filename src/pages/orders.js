@@ -3,6 +3,7 @@ import db from "../../firebase";
 import Header from "../components/Header";
 import moment from "moment";
 import Order from "../components/Order";
+import Footer from "../components/Footer";
 
 const orders = ({ orders }) => {
   const [session] = useSession();
@@ -26,6 +27,8 @@ const orders = ({ orders }) => {
           ))}
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 };
@@ -33,14 +36,15 @@ const orders = ({ orders }) => {
 export default orders;
 
 export async function getServerSideProps(context) {
-  const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-
+  const stripe = require("stripe")(process.env.stripe_secret_key);
   // get the user credentials
   const session = await getSession(context);
 
   if (!session) {
     return {
-      props: {},
+      props: {
+        orders: [],
+      },
     };
   }
 
