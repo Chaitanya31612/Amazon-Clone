@@ -34,4 +34,4 @@ yarn-error.log*
 .vercel
 .idea
 
-permissions.json
+# permissions.json
