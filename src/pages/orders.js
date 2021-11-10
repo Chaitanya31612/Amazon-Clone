@@ -12,8 +12,8 @@ const orders = ({ orders }) => {
     <div>
       <Header />
 
-      <main className='max-w-screen-lg mx-auto p-10'>
-        <h1 className='text-2xl border-b mb-2 pb-1'>Your Orders</h1>
+      <main className="max-w-screen-lg mx-auto p-10">
+        <h1 className="text-2xl border-b mb-2 pb-1">Your Orders</h1>
 
         {session ? (
           <h2>{orders.length} Orders</h2>
@@ -21,7 +21,7 @@ const orders = ({ orders }) => {
           <h2>Please Sign In to see your orders</h2>
         )}
 
-        <div className='mt-5 space-y-4'>
+        <div className="mt-5 space-y-4">
           {orders.map((order) => (
             <Order key={order.id} order={order} />
           ))}
@@ -36,7 +36,7 @@ const orders = ({ orders }) => {
 export default orders;
 
 export async function getServerSideProps(context) {
-  const stripe = require("stripe")(process.env.stripe_secret_key);
+  const stripe = require("stripe")(`${process.env.stripe_secret_key}`);
   // get the user credentials
   const session = await getSession(context);
 

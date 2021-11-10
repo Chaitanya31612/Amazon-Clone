@@ -13,7 +13,7 @@ import { useSession } from "next-auth/client";
 import { useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
-const stripePromise = loadStripe(process.env.stripe_public_key);
+const stripePromise = loadStripe(`${process.env.stripe_public_key}`);
 
 const checkout = () => {
   const items = useSelector(selectItems);
@@ -30,7 +30,7 @@ const checkout = () => {
   // console.log(session);
 
   const createCheckoutSession = async () => {
-    console.log("public k", process.env.stripe_public_key);
+    // console.log("public k", process.env.stripe_public_key);
     const stripe = await stripePromise;
 
     console.log("stripe", stripe);
@@ -52,7 +52,7 @@ const checkout = () => {
   };
 
   return (
-    <div className='bg-gray-100'>
+    <div className="bg-gray-100">
       <Head>
         <title>Shopping Cart</title>
       </Head>
@@ -61,16 +61,16 @@ const checkout = () => {
 
       <main className={"lg:flex max-w-screen-2xl mx-auto"}>
         {/* Items */}
-        <div className='flex-grow m-5 shadow-sm'>
+        <div className="flex-grow m-5 shadow-sm">
           <Image
-            src='https://links.papareact.com/ikj'
+            src="https://links.papareact.com/ikj"
             width={1020}
             height={250}
-            objectFit='contain'
+            objectFit="contain"
           />
 
-          <div className='flex flex-col p-5 space-y-10 bg-white'>
-            <h1 className='text-2xl border-b pb-4'>
+          <div className="flex flex-col p-5 space-y-10 bg-white">
+            <h1 className="text-2xl border-b pb-4">
               {items.length > 0
                 ? "Shopping Cart"
                 : "Your Amazon Basket is Empty"}
@@ -89,9 +89,9 @@ const checkout = () => {
               />
             ))}
 
-            <h2 className='whitespace-nowrap border-t pt-4 flex justify-end'>
+            <h2 className="whitespace-nowrap border-t pt-4 flex justify-end">
               Subtotal ({items.length} items):
-              <span className='ml-4 font-bold'>
+              <span className="ml-4 font-bold">
                 {new Intl.NumberFormat("en-IN", {
                   style: "currency",
                   currency: "INR",
@@ -102,17 +102,17 @@ const checkout = () => {
         </div>
 
         {/* Payment & total */}
-        <div className='flex flex-col p-10 shadow-md bg-white'>
+        <div className="flex flex-col p-10 shadow-md bg-white">
           {items.length > 0 && (
             <>
-              <h2 className='whitespace-nowrap'>
-                <div className='whitespace-breakspaces mb-4'>
+              <h2 className="whitespace-nowrap">
+                <div className="whitespace-breakspaces mb-4">
                   {total >= 499 ? (
-                    <p className='text-xs text-green-600'>{`Your order is eligible for FREE Delivery.`}</p>
+                    <p className="text-xs text-green-600">{`Your order is eligible for FREE Delivery.`}</p>
                   ) : (
-                    <p className='text-xs text-gray-500'>
+                    <p className="text-xs text-gray-500">
                       Add
-                      <span className='text-blue-400 mx-1'>
+                      <span className="text-blue-400 mx-1">
                         {new Intl.NumberFormat("en-IN", {
                           style: "currency",
                           currency: "INR",
@@ -124,7 +124,7 @@ const checkout = () => {
                   )}
                 </div>
                 Subtotal ({items.length} items):
-                <span className='font-bold'>
+                <span className="font-bold">
                   {new Intl.NumberFormat("en-IN", {
                     style: "currency",
                     currency: "INR",
@@ -133,7 +133,7 @@ const checkout = () => {
               </h2>
 
               <button
-                role='link'
+                role="link"
                 onClick={createCheckoutSession}
                 disabled={!session}
                 className={`button mt-2 ${!session && "not-allowed-button"}`}
